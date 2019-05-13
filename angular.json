@@ -3,17 +3,21 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "embarkPreOffer": {
+    "newproject": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/embarkPreOffer",
+            "outputPath": "dist/newproject",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -23,10 +27,11 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",    
-              "src/svg_styles.css",
-              "src/styles.css",
-              "src/handheld.css" 
+             	"node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.scss",
+              "src/handheld.css",
+			  "src/style.css"
+			  
             ],
             "scripts": []
           },
@@ -53,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "embarkPreOffer:build"
+            "browserTarget": "newproject:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "embarkPreOffer:build:production"
+              "browserTarget": "newproject:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "embarkPreOffer:build"
+            "browserTarget": "newproject:build"
           }
         },
         "test": {
@@ -75,7 +80,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": [],
             "assets": [
@@ -98,7 +103,7 @@
         }
       }
     },
-    "embarkPreOffer-e2e": {
+    "newproject-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -106,7 +111,12 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "embarkPreOffer:serve"
+            "devServerTarget": "newproject:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "newproject:serve:production"
+            }
           }
         },
         "lint": {
@@ -121,5 +131,5 @@
       }
     }
   },
-  "defaultProject": "embarkPreOffer"
+  "defaultProject": "newproject"
 }
